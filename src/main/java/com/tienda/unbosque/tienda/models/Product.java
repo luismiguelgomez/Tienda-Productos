@@ -25,15 +25,29 @@ public class Product {
     @JoinColumn(name = "Provider_id", nullable = false)
     private Provider provider;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "Variant_id", nullable = false)
+    private Variant variant;
+
     public Product(){}
 
-    public Product(Long productId, String productName, String productCategory, String productBrand, String productStock, Provider provider) {
+
+    public Product(Long productId, String productName, String productCategory, String productBrand, String productStock, Provider provider, Variant variant) {
         ProductId = productId;
         ProductName = productName;
         ProductCategory = productCategory;
         this.productBrand = productBrand;
         this.productStock = productStock;
         this.provider = provider;
+        this.variant = variant;
+    }
+
+    public Variant getVariant() {
+        return variant;
+    }
+
+    public void setVariant(Variant variant) {
+        this.variant = variant;
     }
 
     public Long getProductId() {

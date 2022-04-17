@@ -1,9 +1,12 @@
 package com.tienda.unbosque.tienda.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "product")
+@JsonIgnoreProperties(value={"hibernateLazyInitializer","handler","fieldHandler"})
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

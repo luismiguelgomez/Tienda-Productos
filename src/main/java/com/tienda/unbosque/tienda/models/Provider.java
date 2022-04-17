@@ -1,9 +1,12 @@
 package com.tienda.unbosque.tienda.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "provider")
+@JsonIgnoreProperties(value={"hibernateLazyInitializer","handler","fieldHandler"})
 public class Provider {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -36,6 +39,11 @@ public class Provider {
 
     @Column(name = "Provider_pw", nullable = false)
     private String providerPw;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_categoria")
+    private Product product;
+
 
     public Provider(){}
 
